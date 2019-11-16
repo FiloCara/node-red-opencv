@@ -10,7 +10,8 @@
     "nodes": {
         "imread": "./imread.js",
         "cvtcolor": "./cvtcolor.js",
-        "imencode": "./imencode.js"
+        "imencode": "./imencode.js",
+        "videocapture": "./videocapture.js"
     }
   },
   "scripts": {
