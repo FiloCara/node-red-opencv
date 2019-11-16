@@ -22,6 +22,8 @@ module.exports = function(RED) {
                 node.colorspace = cv.COLOR_RGB2HLS
             case "RGB2HSV":
                 node.colorspace = cv.COLOR_RGB2HSV
+            case "GRAY2BGR":
+                node.colorspace = cv.COLOR_GRAY2BGR
             // Add others colorspace
         }
         node.on('input', function(msg) {
