@@ -5,7 +5,6 @@
   "main": "",
   "dependencies": {"opencv4nodejs": "5.4.0"},
   "devDependencies": {},
-  "opencv4nodejs": { "disableAutoBuild": 1},
   "node-red" : {
     "nodes": {
         "imread": "./imread.js",

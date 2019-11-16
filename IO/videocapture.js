@@ -12,6 +12,10 @@ module.exports = function(RED) {
             msg.payload = cv.imencode('.jpg', msg.payload).toString('base64');
             node.send(msg);
         })
+
+        node.on('close', function() {
+            vCap.release()
+        })
     }
     RED.nodes.registerType("videocapture",VideoCapture);
 };

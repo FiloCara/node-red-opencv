@@ -1,0 +1,31 @@
+<script type="text/javascript">
+    RED.nodes.registerType('imwrite',{
+        category: 'opencv',
+        color: '#FFFFFF',
+        defaults: {
+            name: {value:""},
+            filepath: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "./icons/opencv-node-red-logo.png",
+        label: function() {
+            return this.name||"imwrite";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="imwrite">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-filepath"><i class="icon-tag"></i> Filepath</label>
+        <input type="text" id="node-input-filepath" placeholder="Filepath">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="imwrite">
+    <p>Opencv node to write image to a file</p>
+</script>
