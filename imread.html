@@ -1,0 +1,31 @@
+<script type="text/javascript">
+    RED.nodes.registerType('imread',{
+        category: 'function',
+        color: '#FFFFFF',
+        defaults: {
+            name: {value:""},
+            filepath: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "./icons/opencv-node-red-logo",
+        label: function() {
+            return this.name||"imread";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="imread">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-filepath"><i class="icon-tag"></i> Filepath</label>
+        <input type="text" id="node-input-filepath" placeholder="Filepath">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="imread">
+    <p>Opencv node to open image from a file</p>
+</script>

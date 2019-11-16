@@ -1,0 +1,30 @@
+<script type="text/javascript">
+    RED.nodes.registerType('imencode',{
+        category: 'function',
+        color: '#FFFFFF',
+        defaults: {
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "arrow-in.png",
+        label: function() {
+            return this.name||"imencode";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="imencode">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-format"><i class="icon-tag"></i>Format</label>
+        <input type="text" id="node-input-format" placeholder="Format">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="imencode">
+    <p>Opencv node to open image from a file</p>
+</script>

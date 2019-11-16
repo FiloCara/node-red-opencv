@@ -1,0 +1,26 @@
+{
+  "name": "node-red-opencv",
+  "version": "0.0.1",
+  "description": "A node-red module that wraps some of the functionality of the amazing opencv4nodejs library",
+  "main": "",
+  "dependencies": {"opencv4nodejs": "5.4.0"},
+  "devDependencies": {},
+  "node-red" : {
+    "nodes": {
+        "imread": "./imread.js",
+        "cvtcolor": "./cvtcolor.js",
+        "imencode": "./imencode.js"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "opencv",
+    "computer",
+    "vision",
+    "cv"
+  ],
+  "author": "Filippo Cara",
+  "license": "ISC"
+}

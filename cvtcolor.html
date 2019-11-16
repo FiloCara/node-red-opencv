@@ -1,0 +1,34 @@
+<script type="text/javascript">
+    RED.nodes.registerType('cvtcolor',{
+        category: 'function',
+        color: '#FFFFFF',
+        defaults: {
+            name: {value:""},
+            colorspace: {
+                value:"",
+                required: true
+            }
+        },
+        inputs:1,
+        outputs:1,
+        icon: "./icons/opencv-node-red-logo",
+        label: function() {
+            return this.name||"cvtcolor";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="cvtcolor">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-colorspace"><i class="icon-tag"></i>Colorspace</label>
+        <input type="text" id="node-input-colorspace" placeholder="Colorspace">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="imread">
+    <p>Opencv node to open image from a file</p>
+</script>
