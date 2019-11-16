@@ -5,7 +5,7 @@
         defaults: {
             name: {value:""},
             colorspace: {
-                value:"",
+                value:"BGR2GRAY",
                 required: true
             }
         },
@@ -25,7 +25,7 @@
     </div>
     <div class="form-row">
         <label for="node-input-colorspace"><i class="icon-tag"></i>Colorspace</label>
-        <select id="node-input-colorspace" style="width:60%; margin-right:5px;"></select>
+        <select id="node-input-colorspace" style="width:60%; margin-right:5px;">
             <option value="BGR2RGB">BGR2RGB</option>
             <option value="BGR2GRAY">BGR2GRAY</option>
             <option value="BGR2HSL">BGR2HSL</option>
@@ -33,7 +33,8 @@
             <option value="RGB2BGR">RGB2BGR</option>
             <option value="RGB2GRAY">RGB2GRAY</option>
             <option value="RGB2HSL">RGB2HSL</option>
-            <option value="RGB2HSV">RGB2HSV</option>        
+            <option value="RGB2HSV">RGB2HSV</option>
+        </select>        
     </div>
 </script>
 
