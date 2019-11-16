@@ -12,4 +12,10 @@ The current library has been tested only Ubuntu 18.04.
     npm install /path/to/cloned/repository
 * Start Node-red
 
+# Project Structur
+
+* icons: folder with custom node icon
+* image_processing: basic image processing nodes
+* IO: Input/Output Opencv nodes
+* pictures: exemple pictures
 

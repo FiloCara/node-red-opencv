@@ -7,10 +7,12 @@
   "devDependencies": {},
   "node-red" : {
     "nodes": {
-        "imread": "./imread.js",
+        "imread": "./IO/imread.js",
+        "imwrite": "./IO/imwrite.js",
+        "videocapture": "./IO/videocapture.js",
         "cvtcolor": "./cvtcolor.js",
-        "imencode": "./imencode.js",
-        "videocapture": "./videocapture.js"
+        "imencode": "./imencode.js"
+        
     }
   },
   "scripts": {
