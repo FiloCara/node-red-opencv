@@ -2,7 +2,7 @@
 A node-red module that wraps some of the functionality of the amazing opencv4nodejs library
 This library is under construction.
 ## Install
-The current library has been tested only Ubuntu 18.04.
+The current library has been tested only on Ubuntu 18.04. It should work in any Linux distro.
 
 * Clone the current repository in your working space
 * Move to the node-red working directory, on linux:
