@@ -10,9 +10,8 @@
         "imread": "./IO/imread.js",
         "imwrite": "./IO/imwrite.js",
         "videocapture": "./IO/videocapture.js",
-        "cvtcolor": "./cvtcolor.js",
-        "imencode": "./imencode.js"
-        
+        "cvtcolor": "./image_processing/cvtcolor.js",
+        "imencode": "./image_processing/imencode.js"
     }
   },
   "scripts": {
