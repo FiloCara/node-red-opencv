@@ -11,7 +11,7 @@
         },
         inputs:1,
         outputs:1,
-        icon: "/icons/opencv-node-red-logo",
+        icon: "./icons/opencv-node-red-logo.png",
         label: function() {
             return this.name||"cvtcolor";
         }
@@ -25,10 +25,18 @@
     </div>
     <div class="form-row">
         <label for="node-input-colorspace"><i class="icon-tag"></i>Colorspace</label>
-        <input type="text" id="node-input-colorspace" placeholder="Colorspace">
+        <select id="node-input-colorspace" style="width:60%; margin-right:5px;"></select>
+            <option value="BGR2RGB">BGR2RGB</option>
+            <option value="BGR2GRAY">BGR2GRAY</option>
+            <option value="BGR2HSL">BGR2HSL</option>
+            <option value="BGR2HSV">BGR2HSV</option>
+            <option value="RGB2BGR">RGB2BGR</option>
+            <option value="RGB2GRAY">RGB2GRAY</option>
+            <option value="RGB2HSL">RGB2HSL</option>
+            <option value="RGB2HSV">RGB2HSV</option>        
     </div>
 </script>
 
 <script type="text/x-red" data-help-name="imread">
-    <p>Opencv node to open image from a file</p>
+    <p>Opencv node to change the colorspace of the current image</p>
 </script>
