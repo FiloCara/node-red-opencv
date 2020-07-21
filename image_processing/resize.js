@@ -10,7 +10,6 @@ module.exports = function(RED){
             decodedPic = cv.imdecode(Buffer.from(msg.payload,'base64'))
 
             // Resize picture according to method choosen by the user
-
             switch(config.method) {
                 case "Rescale":
                     node.scaleFactor = config.scaleFactor;

@@ -5,7 +5,7 @@
         defaults: {
             name: {value:""},
             method: {
-                value:"Resize",
+                value:"Rescale",
                 required: true
             }
         },
@@ -16,11 +16,12 @@
             return this.name||"resize";
         },
         oneditprepare: function() {
+            $("#node-rescale").hide();
             $("#node-input-method").on("change",function() {
                 if (($("#node-input-method").val() === "Rescale")) {
                     $("#node-rescale").show();
                     $("#node-resize").hide();
-                    $("#node-resizeToMax").hide();
+                    $("#node-resizetomax").hide();
                 }
                 if (($("#node-input-method").val() === "Resize")) {
                     $("#node-rescale").hide();
@@ -34,26 +35,29 @@
                     $("#node-resizetomax").show();
                 }
             });
+            $(".my-button-group").on("click", function() {
+                $(".my-button-group").removeClass("selected");
+                $(this).addClass("selected");
+})
         }
     });
 </script>
 
 <script type="text/x-red" data-template-name="resize">
     <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i>Name</label>
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-        <label for="node-input-method"><i class="fa fa-wrench"></i></i>Method</label>
+        <label for="node-input-method"><i class="fa fa-wrench"></i></i> Method</label>
         <select id="node-input-method" style="width:60%; margin-right:5px;">
             <option value="Rescale">Rescale</option>
             <option value="Resize">Resize</option>
             <option value="ResizeToMax">ResizeToMax</option>
     </div>
-
     <div class="form-row" id="node-rescale">
-        <label for="node-input-rescale"><i class="fa fa-tag"></i>Factor</label>
-        <input type="text" id="node-input-rescale" placeholder="Rescale">
+        <label for="node-input-rescale"><i class="icon-tag"></i>Factor</label>
+        <input type="text" id="node-input-rescale" placeholder="0.5">
     </div>
 
     <div class="form-row" id="node-resize">
@@ -63,11 +67,21 @@
 
     <div class="form-row", id="node-resizetomax">
         <label for="node-input-resizetomax"><i class="icon-tag"></i>Factor</label>
-        <input type="text" id="node-input-resizetomax" placeholder="ResizeToMax">
+        <input type="text" id="node-input-resizetomax" placeholder="100">
     </div>
     
+    <div class="form-row">
+    <span class="button-group">
+        <label><i class="icon-tag"></i>Image output format</label>
+        <button type="button" class="red-ui-button toggle selected my-button-group">base64</button>
+        <button type="button" class="red-ui-button toggle my-button-group">Buffer</button>
+        <button type="button" class="red-ui-button toggle my-button-group">Array</button>
+    </span>
+    </div>
+
 </script>
 
 <script type="text/x-red" data-help-name="resize">
-    <p>Opencv node to resize image. It allows to use 3 different methods: Rescale, Resize and ResizeToMax. Please have a look at the Opencv4Nodejs for more detail about the 3 methods</p>
+    <p>Opencv node to resize image.</p> 
+    It allows to use 3 different methods: Rescale, Resize and ResizeToMax. Please have a look at the Opencv4Nodejs for more detail about the 3 methods</p>
 </script>
