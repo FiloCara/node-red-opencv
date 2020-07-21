@@ -1,0 +1,60 @@
+<script type="text/javascript">
+    RED.nodes.registerType('threshold',{
+        category: 'opencv',
+        color: '#FFFFFF',
+        defaults: {
+            name: {value:""},
+            thresholdValue: {
+                value:127,
+                required=true
+            },
+            maxValue: {
+                value:255,
+                required=true
+            },
+            method: {
+                value:"THRESH_BINARY",
+                required:true
+            }
+        },
+        inputs:1,
+        outputs:1,
+        icon: "./icons/opencv-node-red-logo.png",
+        label: function() {
+            return this.name||"threshold";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="threshold">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-thresholdValue"><i class="icon-tag"></i> Thresh Value</label>
+        <input type="text" id="node-input-thresholdValue" placeholder="127">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-maxValue"><i class="icon-tag"></i> Max Value</label>
+        <input type="text" id="node-input-maxValue" placeholder="255">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-method"><i class="icon-tag"></i> Method</label>
+        <select id="node-input-method" style="width:60%; margin-right:5px;">
+            <option value="THRESH_BINARY">THRESH_BINARY</option>
+            <option value="THRESH_BINARY_INV">THRESH_BINARY_INV</option>
+            <option value="THRESH_TRUNC">THRESH_TRUNC</option>
+            <option value="THRESH_TOZERO">THRESH_TOZERO</option>
+            <option value="THRESH_TOZERO_INV">THRESH_TOZERO_INV</option>
+            <option value="THRESH_OTSU">THRESH_OTSU</option>
+        </select>        
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="threshold">
+    <p>Opencv node to apply a threshold to the current image</p>
+</script>
