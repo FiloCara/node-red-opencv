@@ -11,7 +11,7 @@
         "imwrite": "./IO/imwrite.js",
         "videocapture": "./IO/videocapture.js",
         "cvtcolor": "./image_processing/cvtcolor.js",
-        "imencode": "./image_processing/imencode.js"
+        "resize": "./image_processing/resize.js"
     }
   },
   "scripts": {
