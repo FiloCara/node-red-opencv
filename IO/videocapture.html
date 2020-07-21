@@ -4,8 +4,9 @@
         color: '#FFFFFF',
         defaults: {
             name: {value:""},
-            devicePort: {value: 0, 
-                        required: true}
+            device: {
+                value:"", 
+                required: true}
         },
         inputs:1,
         outputs:1,
@@ -18,12 +19,12 @@
 
 <script type="text/x-red" data-template-name="videocapture">
     <div class="form-row">
-        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-        <label for="node-input-devicePort"><i class="icon-tag"></i>Device Port</label>
-        <input type="text" id="node-input-devicePort" placeholder="Device Port">
+        <label for="node-input-device"><i class="fa fa-camera"></i> Device</label>
+        <input type="text" id="node-input-device" placeholder="Device">
     </div>
 </script>
 

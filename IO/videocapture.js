@@ -5,7 +5,7 @@ module.exports = function(RED) {
     function VideoCapture(config) {
         RED.nodes.createNode(this, config);
         var node  = this;
-        node.devicePort = config.devicePort;
+        node.device = parseInt(config.device);
         var vCap = null;
         node.status({fill:"red",shape:"dot",text:"Not recording"});
 
@@ -13,9 +13,9 @@ module.exports = function(RED) {
             // If property start, then start recording
             if (msg.hasOwnProperty('start') === true) {
                 node.status({fill:"yellow",shape:"dot",text:"Connecting"});
-                vCap = new cv.VideoCapture(node.devicePort);
+                vCap = new cv.VideoCapture(node.device);
                 vCap.read()
-                node.status({fill:"green",shape:"dot",text:"Recording"});
+                node.status({fill:"green",shape:"dot",text:"Ready"});
             }
             // If property reset, then close and release capture object
             else if (msg.hasOwnProperty('reset') === true) {
@@ -23,7 +23,7 @@ module.exports = function(RED) {
                 if (vCap !== null) {
                     vCap.release()
                     vCap = null;
-                    node.status({fill:"red",shape:"dot",text:"Not recording"});
+                    node.status({fill:"red",shape:"dot",text:"Stopped"});
                 }  
             }
             // If input and no 'start' or 'reset', then take a shot
