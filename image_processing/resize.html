@@ -4,37 +4,70 @@
         color: '#FFFFFF',
         defaults: {
             name: {value:""},
-            x: {
-                value:"",
-                required: true
-            },
-            y: {
-                value:"",
+            method: {
+                value:"Resize",
                 required: true
             }
         },
         inputs:1,
         outputs:1,
-        icon: "./icons/opencv-node-red-logo.png",
+        icon: "../icons/opencv-node-red-logo.png",
         label: function() {
-            return this.name||"cvtcolor";
+            return this.name||"resize";
+        },
+        oneditprepare: function() {
+            $("#node-input-method").on("change",function() {
+                if (($("#node-input-method").val() === "Rescale")) {
+                    $("#node-rescale").show();
+                    $("#node-resize").hide();
+                    $("#node-resizeToMax").hide();
+                }
+                if (($("#node-input-method").val() === "Resize")) {
+                    $("#node-rescale").hide();
+                    $("#node-resize").show();
+                    $("#node-resizetomax").hide();
+                }
+
+                if (($("#node-input-method").val() === "ResizeToMax")) {
+                    $("#node-rescale").hide();
+                    $("#node-resize").hide();
+                    $("#node-resizetomax").show();
+                }
+            });
         }
     });
 </script>
 
 <script type="text/x-red" data-template-name="resize">
     <div class="form-row">
-        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+        <label for="node-input-name"><i class="fa fa-tag"></i>Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-        <label for="node-input-x"><i class="icon-tag"></i>X size</label>
-        <input type="text" id="node-input-x" placeholder="X_size">
-        <label for="node-input-y"><i class="icon-tag"></i>Y size</label>
-        <input type="text" id="node-input-y" placeholder="Y_size"> 
+        <label for="node-input-method"><i class="fa fa-wrench"></i></i>Method</label>
+        <select id="node-input-method" style="width:60%; margin-right:5px;">
+            <option value="Rescale">Rescale</option>
+            <option value="Resize">Resize</option>
+            <option value="ResizeToMax">ResizeToMax</option>
     </div>
+
+    <div class="form-row" id="node-rescale">
+        <label for="node-input-rescale"><i class="fa fa-tag"></i>Factor</label>
+        <input type="text" id="node-input-rescale" placeholder="Rescale">
+    </div>
+
+    <div class="form-row" id="node-resize">
+        <label for="node-input-resize"><i class="icon-tag"></i>Resize dimensions</label>
+        <input type="text" id="node-input-resize" placeholder="Resize">
+    </div>
+
+    <div class="form-row", id="node-resizetomax">
+        <label for="node-input-resizetomax"><i class="icon-tag"></i>Factor</label>
+        <input type="text" id="node-input-resizetomax" placeholder="ResizeToMax">
+    </div>
+    
 </script>
 
 <script type="text/x-red" data-help-name="resize">
-    <p>Opencv node to resize image</p>
+    <p>Opencv node to resize image. It allows to use 3 different methods: Rescale, Resize and ResizeToMax. Please have a look at the Opencv4Nodejs for more detail about the 3 methods</p>
 </script>
