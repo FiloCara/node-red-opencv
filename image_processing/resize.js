@@ -10,7 +10,6 @@ module.exports = function(RED){
         node.outputFormat = config.outputFormat
         node.on('input', function(msg) {
             // Decode img
-            // decodedPic = cv.imdecode(Buffer.from(msg.payload,'base64'))
             let previousImage = utils.readImageMsg(msg.payload)
             console.log(previousImage)
 
