@@ -4,10 +4,11 @@
         color: '#FFFFFF',
         defaults: {
             name: {value:""},
-            method: {
-                value:"Rescale",
-                required: true
-            }
+            method: {value:"Rescale"},
+            rescale: {value:""},
+            resizeX: {value:""},
+            resizeY: {value:""},
+            resizetomax: {value:""}
         },
         inputs:1,
         outputs:1,
@@ -16,29 +17,31 @@
             return this.name||"resize";
         },
         oneditprepare: function() {
-            $("#node-rescale").hide();
             $("#node-input-method").on("change",function() {
                 if (($("#node-input-method").val() === "Rescale")) {
                     $("#node-rescale").show();
-                    $("#node-resize").hide();
-                    $("#node-resizetomax").hide();
+                }
+                else {
+                    $("#node-rescale").hide();
                 }
                 if (($("#node-input-method").val() === "Resize")) {
-                    $("#node-rescale").hide();
                     $("#node-resize").show();
-                    $("#node-resizetomax").hide();
                 }
+                else {
+                    $("#node-resize").hide();
+                } 
 
                 if (($("#node-input-method").val() === "ResizeToMax")) {
-                    $("#node-rescale").hide();
-                    $("#node-resize").hide();
                     $("#node-resizetomax").show();
                 }
+                else {
+                    $("#node-resizetomax").hide();
+                } 
             });
-            $(".my-button-group").on("click", function() {
-                $(".my-button-group").removeClass("selected");
-                $(this).addClass("selected");
-})
+            // $(".my-button-group").on("click", function() {
+            //     $(".my-button-group").removeClass("selected");
+            //     $(this).addClass("selected");
+                // })
         }
     });
 </script>
@@ -54,20 +57,23 @@
             <option value="Rescale">Rescale</option>
             <option value="Resize">Resize</option>
             <option value="ResizeToMax">ResizeToMax</option>
+        </select>
     </div>
     <div class="form-row" id="node-rescale">
         <label for="node-input-rescale"><i class="icon-tag"></i>Factor</label>
-        <input type="text" id="node-input-rescale" placeholder="0.5">
+        <input type="text" id="node-input-rescale" style="width:30%; margin-right:5px;" placeholder="0.5">
     </div>
 
     <div class="form-row" id="node-resize">
-        <label for="node-input-resize"><i class="icon-tag"></i>Resize dimensions</label>
-        <input type="text" id="node-input-resize" placeholder="Resize">
+        <span>
+            <input type="text" id="node-input-resizeX" style="width:20%; margin-right:5px;" placeholder="X size">
+            <input type="text" id="node-input-resizeY" style="width:20%; margin-right:5px;" placeholder="Y size">
+        </span>    
     </div>
 
     <div class="form-row", id="node-resizetomax">
         <label for="node-input-resizetomax"><i class="icon-tag"></i>Factor</label>
-        <input type="text" id="node-input-resizetomax" placeholder="100">
+        <input type="text" id="node-input-resizetomax" style="width:30%; margin-right:5px;" placeholder="100">
     </div>
     
     <div class="form-row">

@@ -12,15 +12,17 @@ module.exports = function(RED){
             // Resize picture according to method choosen by the user
             switch(config.method) {
                 case "Rescale":
-                    node.scaleFactor = config.scaleFactor;
-                    msg.payload = decodedPic.rescale(node.scaleFactor)
+                    node.rescale = parseFloat(config.rescale);
+                    msg.payload = decodedPic.rescale(node.rescale)
+                    break;
                 case "Resize":
-                    node.xSize = config.xSize;
-                    node.ySize = config.ySize;
-                    msg.payload = decodedPic.resize(node.xSize, node.ySize)
+                    node.resizeX = parseFloat(config.resizeX);
+                    node.resizeY = parseFloat(config.resizeY);
+                    msg.payload = decodedPic.resize(node.resizeX, node.resizeY)
+                    break;
                 case "ResizeToMax":
-                    node.resizeFactor = config.resizeFactor;
-                    msg.payload = decodedPic.resizeToMax(node.resizeFactor)
+                    node.resizetomax = parseFloat(config.resizetomax);
+                    msg.payload = decodedPic.resizeToMax(node.resizetomax)
             }
             // Encode
             msg.payload = cv.imencode('.jpg', msg.payload).toString('base64');
