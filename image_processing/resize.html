@@ -8,7 +8,8 @@
             rescale: {value:""},
             resizeX: {value:""},
             resizeY: {value:""},
-            resizetomax: {value:""}
+            resizetomax: {value:""},
+            outputFormat: {value:"base64"}
         },
         inputs:1,
         outputs:1,
@@ -47,10 +48,7 @@
 </script>
 
 <script type="text/x-red" data-template-name="resize">
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
-    </div>
+    
     <div class="form-row">
         <label for="node-input-method"><i class="fa fa-wrench"></i></i> Method</label>
         <select id="node-input-method" style="width:60%; margin-right:5px;">
@@ -75,14 +73,19 @@
         <label for="node-input-resizetomax"><i class="icon-tag"></i>Factor</label>
         <input type="text" id="node-input-resizetomax" style="width:30%; margin-right:5px;" placeholder="100">
     </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
     
     <div class="form-row">
-    <span class="button-group">
-        <label><i class="icon-tag"></i>Image output format</label>
-        <button type="button" class="red-ui-button toggle selected my-button-group">base64</button>
-        <button type="button" class="red-ui-button toggle my-button-group">Buffer</button>
-        <button type="button" class="red-ui-button toggle my-button-group">Array</button>
-    </span>
+        <label for="node-input-outputFormat"><i class="fa fa-wrench"></i> Image Src Format</label>
+        <select id="node-input-outputFormat" style="width:60%; margin-right:5px;">
+            <option value="base64">Base64 String</option>
+            <option value="buffer">Buffer</option>
+            <option value="array">Array</option>
+        </select>
     </div>
 
 </script>

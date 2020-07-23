@@ -1,4 +1,5 @@
 const cv = require('opencv4nodejs')
+const utils = require('../utils')
 
 module.exports = function(RED) {
 
@@ -11,8 +12,8 @@ module.exports = function(RED) {
                 node.filepath = msg.filepath
             }
             // Decode img
-            decodedPic = cv.imdecode(Buffer.from(msg.payload,'base64'))
-            cv.imwrite(node.filepath, decodedPic)
+            let MatImage = utils.readImageMsg(msg.payload)
+            cv.imwrite(node.filepath, MatImage)
         })
     }
     RED.nodes.registerType("imwrite",ImWrite);

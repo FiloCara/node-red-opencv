@@ -5,32 +5,52 @@
         defaults: {
             name: {value:""},
             filepath: {value:""},
-            flag: {value:0}
+            flag: {value:"IMREAD_COLOR"},
+            outputFormat : {value: "base64"}
         },
         inputs:1,
         outputs:1,
         icon: "../icons/opencv-node-red-logo.png",
         label: function() {
             return this.name||"imread";
+        },
+        oneditprepare: function() {
         }
     });
 </script>
 
 <script type="text/x-red" data-template-name="imread">
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
-    </div>
+    
     <div class="form-row">
         <label for="node-input-filepath"><i class="fa fa-file"></i> Filepath</label>
         <input type="text" id="node-input-filepath" placeholder="Filepath">
     </div>
     <div class="form-row">
         <label for="node-input-flag"><i class="fa fa-wrench"></i> Flag</label>
-        <input type="text" id="node-input-flag" placeholder="0">
+        <select id="node-input-flag" style="width:60%; margin-right:5px;">
+            <option value="IMREAD_UNCHANGED">IMREAD_UNCHANGED</option>
+            <option value="IMREAD_GRAYSCALE">IMREAD_GRAYSCALE</option>
+            <option value="IMREAD_COLOR">IMREAD_COLOR</option>
+        </select>
     </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-outputFormat"><i class="fa fa-wrench"></i> Image Src Format</label>
+        <select id="node-input-outputFormat" style="width:60%; margin-right:5px;">
+            <option value="base64">Base64 String</option>
+            <option value="buffer">Buffer</option>
+            <option value="array">Array</option>
+        </select>
+    </div>
+
 </script>
 
 <script type="text/x-red" data-help-name="imread">
     <p>Opencv node to open image from a file</p>
+    <p>The node take a filepath and it return an Object<p>
 </script>

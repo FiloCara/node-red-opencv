@@ -22,12 +22,9 @@
 </script>
 
 <script type="text/x-red" data-template-name="cvtcolor">
+    
     <div class="form-row">
-        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
-    </div>
-    <div class="form-row">
-        <label for="node-input-colorspace"><i class="icon-tag"></i>Colorspace</label>
+        <label for="node-input-colorspace"><i class="icon-tag"></i> Colorspace</label>
         <select id="node-input-colorspace" style="width:60%; margin-right:5px;">
             <option value="BGR2RGB">BGR2RGB</option>
             <option value="BGR2GRAY">BGR2GRAY</option>
@@ -39,6 +36,20 @@
             <option value="RGB2HSV">RGB2HSV</option>
             <option value="GRAY2BGR">GRAY2BGR</option>
         </select>        
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-outputFormat"><i class="fa fa-wrench"></i> Image Src Format</label>
+        <select id="node-input-outputFormat" style="width:60%; margin-right:5px;">
+            <option value="base64">Base64 String</option>
+            <option value="buffer">Buffer</option>
+            <option value="array">Array</option>
+        </select>
     </div>
     
 </script>

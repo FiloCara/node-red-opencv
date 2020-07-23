@@ -1,4 +1,5 @@
 const cv = require('opencv4nodejs')
+const utils = require('../utils')
 
 module.exports = function(RED) {
 
@@ -6,43 +7,46 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, config);
         var node  = this;
         node.colorspace = config.colorspace;
+        node.outputFormat = config.outputFormat;
+
+        switch(node.colorspace) {
+            case "BGR2RGB":
+                node.colorspace = cv.COLOR_BGR2RGB
+                break;
+            case "BGR2GRAY":
+                node.colorspace = cv.COLOR_BGR2GRAY
+                break;
+            case "BGR2HLS":
+                node.colorspace = cv.COLOR_BGR2HLS
+                break;
+            case "BGR2HSV":
+                node.colorspace = cv.COLOR_BGR2HSV
+                break;
+            case "RGB2BGR":
+                node.colorspace = cv.COLOR_RGB2BGR
+                break;
+            case "RGB2GRAY":
+                node.colorspace = cv.COLOR_RGB2GRAY
+                break;
+            case "RGB2HLS":
+                node.colorspace = cv.COLOR_RGB2HLS
+                break;
+            case "RGB2HSV":
+                node.colorspace = cv.COLOR_RGB2HSV
+                break;
+            case "GRAY2BGR":
+                node.colorspace = cv.COLOR_GRAY2BGR
+                break;
+        }
 
         node.on('input', function(msg) {
-            switch(node.colorspace) {
-                case "BGR2RGB":
-                    node.colorspace = cv.COLOR_BGR2RGB
-                    break;
-                case "BGR2GRAY":
-                    node.colorspace = cv.COLOR_BGR2GRAY
-                    break;
-                case "BGR2HLS":
-                    node.colorspace = cv.COLOR_BGR2HLS
-                    break;
-                case "BGR2HSV":
-                    node.colorspace = cv.COLOR_BGR2HSV
-                    break;
-                case "RGB2BGR":
-                    node.colorspace = cv.COLOR_RGB2BGR
-                    break;
-                case "RGB2GRAY":
-                    node.colorspace = cv.COLOR_RGB2GRAY
-                    break;
-                case "RGB2HLS":
-                    node.colorspace = cv.COLOR_RGB2HLS
-                    break;
-                case "RGB2HSV":
-                    node.colorspace = cv.COLOR_RGB2HSV
-                    break;
-                case "GRAY2BGR":
-                    node.colorspace = cv.COLOR_GRAY2BGR
-                    break;
-            }
+            
             // Decode img
-            decodedPic = cv.imdecode(Buffer.from(msg.payload,'base64'))
+            let previousImage = utils.readImageMsg(msg.payload)
             // Change color space
-            msg.payload = decodedPic.cvtColor(node.colorspace)
+            msg.payload = previousImage.cvtColor(node.colorspace)
             // Encode
-            msg.payload = cv.imencode('.jpg', msg.payload).toString('base64');
+            msg.payload = utils.prepareImageMsg(msg.payload, node.outputFormat)
             node.send(msg);
         })
     }

@@ -1,4 +1,5 @@
 const cv = require('opencv4nodejs')
+const utils = require('../utils')
 
 module.exports = function(RED) {
     //TODO Implement a way to stop video streaming
@@ -6,6 +7,7 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, config);
         var node  = this;
         node.device = parseInt(config.device);
+        node.outputFormat = config.outputFormat
         var vCap = null;
         node.status({fill:"red",shape:"dot",text:"Not recording"});
 
@@ -29,8 +31,8 @@ module.exports = function(RED) {
             // If input and no 'start' or 'reset', then take a shot
             else {
                 if (vCap !== null) {
-                    msg.payload = vCap.read();
-                    msg.payload = cv.imencode('.jpg', msg.payload).toString('base64');
+                    let MatImage = vCap.read();
+                    msg.payload = utils.prepareImageMsg(MatImage, node.outputFormat)
                     node.send(msg);
                 }
             } 
