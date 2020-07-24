@@ -1,0 +1,55 @@
+<script type="text/javascript">
+    RED.nodes.registerType('arithmetic',{
+        category: 'opencv',
+        color: '#FFFFFF',
+        defaults: {
+            name: {value:""},
+            operation: {value:"mul"},
+            scalar: {value:""},
+            outputFormat: {value:"base64"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "./icons/opencv-node-red-logo.png",
+        label: function() {
+            return this.name||"arithmetic";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="arithmetic">
+
+    <div class="form-row">
+        <label for="node-input-operation"><i class="icon-tag"></i> Operation</label>
+        <select id="node-input-operation" style="width:60%; margin-right:5px;">
+            <option value="mul">Scalar multiplication</option>
+            <option value="div">Scalar division</option>
+            <option value="add">Scalar addition</option>
+            <option value="sub">Scalar subtraction</option>
+        </select>        
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-scalar"><i class="icon-tag"></i> Value</label>
+        <input type="text" id="node-input-scalar" placeholder="2">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-outputFormat"><i class="fa fa-wrench"></i> Image Src Format</label>
+        <select id="node-input-outputFormat" style="width:60%; margin-right:5px;">
+            <option value="base64">Base64 String</option>
+            <option value="buffer">Buffer</option>
+            <option value="array">Array</option>
+        </select>
+    </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="arithmetic">
+    <p>Opencv node to multiply or divide image with a scalar</p>
+</script>
