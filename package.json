@@ -12,7 +12,9 @@
         "videocapture": "./IO/videocapture.js",
         "cvtcolor": "./image_processing/cvtcolor.js",
         "resize": "./image_processing/resize.js",
-        "threshold": "./image_processing/threshold.js"
+        "rotate": "./image_processing/rotate.js",
+        "arithmetic": "./image_processing/arithmetic.js",
+        "region": "./image_processing/region.js"
     }
   },
   "scripts": {
