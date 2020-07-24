@@ -1,0 +1,76 @@
+<script type="text/javascript">
+    RED.nodes.registerType('region',{
+        category: 'opencv',
+        color: '#FFFFFF',
+        defaults: {
+            name: {value:""},
+            offsetx: {
+                value:"", 
+                required:true
+            },
+            offsety: {
+                value:"", 
+                required:true
+            },
+            regionWidth: {
+                value:"", 
+                required:true
+            },
+            regionHeight: {
+                value:"", 
+                required:true
+            },
+            outputFormat: {value:"base64"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "../icons/opencv-node-red-logo.png",
+        label: function() {
+            return this.name||"region";
+        },
+        
+    });
+</script>
+
+<script type="text/x-red" data-template-name="region">
+    
+    <div class="form-row">
+        <label for="node-input-offsetx"><i class="fa fa-long-arrow-right"></i> Offset X</label>
+        <input type="text" id="node-input-offsetx" style="width:30%; margin-right:5px;" placeholder="50">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-offsety"><i class="fa fa-long-arrow-down"></i> Offset Y</label>
+        <input type="text" id="node-input-offsety" style="width:30%; margin-right:5px;" placeholder="50">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-regionWidth"><i class="fa fa-arrows-h"></i> Width </label>
+        <input type="text" id="node-input-regionWidth" style="width:30%; margin-right:5px;" placeholder="25">
+    </div>
+
+    
+    <div class="form-row">
+        <label for="node-input-regionHeight"><i class="fa fa-arrows-v"></i> Height</label>
+        <input type="text" id="node-input-regionHeight" style="width:30%; margin-right:5px;" placeholder="25">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-outputFormat"><i class="fa fa-wrench"></i> Image Src Format</label>
+        <select id="node-input-outputFormat" style="width:60%; margin-right:5px;">
+            <option value="base64">Base64 String</option>
+            <option value="buffer">Buffer</option>
+            <option value="array">Array</option>
+        </select>
+    </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="region">
+    <p>Opencv node to rotate image.</p> 
+</script>
