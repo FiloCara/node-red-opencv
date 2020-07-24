@@ -1,0 +1,49 @@
+<script type="text/javascript">
+    RED.nodes.registerType('rotate',{
+        category: 'opencv',
+        color: '#FFFFFF',
+        defaults: {
+            name: {value:""},
+            method: {value:"90"},
+            outputFormat: {value:"base64"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "../icons/opencv-node-red-logo.png",
+        label: function() {
+            return this.name||"rotate";
+        },
+        
+    });
+</script>
+
+<script type="text/x-red" data-template-name="rotate">
+    
+    <div class="form-row">
+        <label for="node-input-method"><i class="fa fa-wrench"></i></i> Angle</label>
+        <select id="node-input-method" style="width:60%; margin-right:5px;">
+            <option value="90">90</option>
+            <option value="180">180</option>
+            <option value="-90">-90</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-outputFormat"><i class="fa fa-wrench"></i> Image Src Format</label>
+        <select id="node-input-outputFormat" style="width:60%; margin-right:5px;">
+            <option value="base64">Base64 String</option>
+            <option value="buffer">Buffer</option>
+            <option value="array">Array</option>
+        </select>
+    </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="rotate">
+    <p>Opencv node to rotate image.</p> 
+</script>
