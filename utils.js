@@ -68,28 +68,6 @@ const assertImageMsg = function(msg) {
     }
 }
 
-// let msg = null
-// let img = new cv.Mat(100, 100, cv.CV_8UC1);
-// console.log(Object.getOwnPropertyNames(img))
-// console.log(img.type)
-// console.time("base64")
-// msg = prepareImageMsg(img, "base64")
-// msg = readImageMsg(msg)
-// console.log(msg.type)
-// console.timeEnd("base64")
-
-// console.time("buffer")
-// msg = prepareImageMsg(img, "buffer")
-// msg = readImageMsg(msg)
-// console.log(msg.type)
-// console.timeEnd("buffer")
-
-// console.time("array")
-// msg = prepareImageMsg(img, "array")
-// msg = readImageMsg(msg)
-// console.log(msg.type)
-// console.timeEnd("array")
-
 module.exports = {
     prepareImageMsg,
     readImageMsg
