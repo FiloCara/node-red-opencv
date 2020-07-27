@@ -68,7 +68,12 @@ const assertImageMsg = function(msg) {
     }
 }
 
+const stringToOpencvConstant = function(str) {
+    return eval("cv." + str)
+}
+
 module.exports = {
     prepareImageMsg,
-    readImageMsg
+    readImageMsg,
+    stringToOpencvConstant
 } 
