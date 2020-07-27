@@ -1,0 +1,108 @@
+<script type="text/javascript">
+    RED.nodes.registerType('threshold',{
+        category: 'opencv',
+        color: '#FFFFFF',
+        defaults: {
+            name: {value:""},
+            method: {value:"simple"},
+            threshValue: {value:""},
+            maxValue: {value:""},
+            threshType:{value:""},
+            adaptiveMethod:{value: "ADAPTIVE_THRESH_MEAN_C"},
+            blockSize:{value:""},
+            C:{value:""},
+            outputFormat: {value:"base64"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "./icons/opencv-node-red-logo.png",
+        label: function() {
+            return this.name||"threshold";
+        },
+        oneditprepare: function() {
+            $("#node-input-method").on("change",function() {
+                if (($("#node-input-method").val() === "simple")) {
+                    $(".node-simple").show();
+                }
+                else {
+                    $(".node-simple").hide();
+                }
+                if (($("#node-input-method").val() === "adaptive")) {
+                    $(".node-adaptive").show();
+                }
+                else {
+                    $(".node-adaptive").hide();
+                }
+                if (($("#node-input-method").val() === "otsu")) {
+                    $(".node-simple").show();
+                    $("#thresh-type").hide();
+                }
+                else {
+                    $("#thresh-type").show();
+                }
+
+            });
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="threshold">
+    
+    <div class="form-row">
+        <label for="node-input-method"><i class="icon-tag"></i> Method</label>
+        <select id="node-input-method" style="width:60%; margin-right:5px;">
+            <option value="simple">Simple Thresholding</option>
+            <option value="adaptive">adaptive Thresholding</option>
+            <option value="otsu">Otzu's Binarization</option>
+        </select>        
+    </div>
+
+    <div class="form-row node-simple">
+        <label for="node-input-threshValue"><i class="fa fa-tag"></i> Thresh value</label>
+        <input type="text" id="node-input-threshValue" placeholder="127">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-maxValue"><i class="fa fa-tag"></i> Max value</label>
+        <input type="text" id="node-input-maxValue" placeholder="255">
+    </div>
+
+    <div class="form-row node-adaptive">
+        <label for="node-input-adaptiveMethod"><i class="fa fa-tag"></i> Adaptive Method</label>
+        <select id="node-input-adaptiveMethod" style="width:60%; margin-right:5px;">
+            <option value="ADAPTIVE_THRESH_MEAN_C">ADAPTIVE_THRESH_MEAN_C</option>
+            <option value="ADAPTIVE_THRESH_GAUSSIAN_C">ADAPTIVE_THRESH_GAUSSIAN_C</option>
+        </select>
+    </div>
+
+    <div class="form-row" id="thresh-type">
+        <label for="node-input-threshType"><i class="fa fa-tag"></i> Thresh Type</label>
+        <select id="node-input-threshType" style="width:60%; margin-right:5px;">
+            <option value="THRESH_BINARY">THRESH_BINARY</option>
+            <option value="THRESH_BINARY_INV">THRESH_BINARY_INV</option>
+            <option value="THRESH_TRUNC">THRESH_TRUNC</option>
+            <option value="THRESH_TOZERO">THRESH_TOZERO</option>
+            <option value="THRESH_TOZERO_INV">THRESH_TOZERO_INV</option>
+        </select>        
+    </div>
+
+    <div class="form-row node-adaptive">
+        <label for="node-input-blockSize"><i class="fa fa-tag"></i> Block Size</label>
+        <input type="text" id="node-input-blockSize" placeholder="11">
+    </div>
+
+    <div class="form-row node-adaptive">
+        <label for="node-input-C"><i class="fa fa-tag"></i> C constant</label>
+        <input type="text" id="node-input-C" placeholder="2">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="threshold">
+    <p>Opencv node to apply a threshold method over the input image</p>
+</script>
