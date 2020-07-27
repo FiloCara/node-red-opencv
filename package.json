@@ -3,18 +3,22 @@
   "version": "0.0.1",
   "description": "A node-red module that wraps some of the functionality of the amazing opencv4nodejs library",
   "main": "",
-  "dependencies": {"opencv4nodejs": "5.4.0"},
+  "dependencies": {
+    "opencv4nodejs": "5.4.0"
+  },
   "devDependencies": {},
-  "node-red" : {
+  "node-red": {
     "nodes": {
-        "imread": "./IO/imread.js",
-        "imwrite": "./IO/imwrite.js",
-        "videocapture": "./IO/videocapture.js",
-        "cvtcolor": "./image_processing/cvtcolor.js",
-        "resize": "./image_processing/resize.js",
-        "rotate": "./image_processing/rotate.js",
-        "arithmetic": "./image_processing/arithmetic.js",
-        "region": "./image_processing/region.js"
+      "imread": "./IO/imread.js",
+      "imwrite": "./IO/imwrite.js",
+      "videocapture": "./IO/videocapture.js",
+      "cvtcolor": "./image_processing/cvtcolor.js",
+      "resize": "./image_processing/resize.js",
+      "rotate": "./image_processing/rotate.js",
+      "arithmetic": "./image_processing/arithmetic.js",
+      "region": "./image_processing/region.js",
+      "threshold": "./image_processing/threshold.js",
+      "blurring": "./image_processing/blurring.js"
     }
   },
   "scripts": {
