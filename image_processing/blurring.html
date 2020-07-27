@@ -1,0 +1,91 @@
+<script type="text/javascript">
+    RED.nodes.registerType('blurring',{
+        category: 'opencv',
+        color: '#FFFFFF',
+        defaults: {
+            name: {value:""},
+            method: {value:"average"},
+            kSizeCols: {value:""},
+            kSizeRows: {value:""},
+            kSize: {value:""},
+            sigmaX: {value:""},
+            sigmaY: {value:""},
+            outputFormat: {value:"base64"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "./icons/opencv-node-red-logo.png",
+        label: function() {
+            return this.name||"blurring";
+        },
+        oneditprepare: function() {
+            $("#node-input-method").on("change",function() {
+                if (($("#node-input-method").val() === "average")) {
+                    $(".average").show();
+                }
+                else {
+                    $(".average").hide();
+                }
+                if (($("#node-input-method").val() === "gaussian")) {
+                    $(".gaussian").show();
+                }
+                else {
+                    $(".gaussian").hide();
+                }
+                if (($("#node-input-method").val() === "median")) {
+                    $(".median").show();
+                }
+                else {
+                    $(".median").hide();
+                }
+            })
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="blurring">
+    
+    <div class="form-row">
+        <label for="node-input-method"><i class="icon-tag"></i> Method</label>
+        <select id="node-input-method" style="width:60%; margin-right:5px;">
+            <option value="average"> Averaging</option>
+            <option value="gaussian"> Gaussian</option>
+            <option value="median"> Median</option>
+        </select>        
+    </div>
+
+    <div class="form-row average gaussian">
+        <label for="node-input-kSizeCols"><i class="fa fa-tag"></i> Kernel size cols</label>
+        <input type="text" id="node-input-kSizeCols" placeholder="5">
+    </div>
+
+    <div class="form-row average gaussian">
+        <label for="node-input-kSizeRows"><i class="fa fa-tag"></i> Kernel size rows</label>
+        <input type="text" id="node-input-kSizeRows" placeholder="5">
+    </div>
+
+    <div class="form-row gaussian">
+        <label for="node-input-sigmaX"><i class="fa fa-tag"></i> Sigma X</label>
+        <input type="text" id="node-input-sigmaX" placeholder="5">
+    </div>
+
+    <div class="form-row gaussian">
+        <label for="node-input-sigmaY"><i class="fa fa-tag"></i> Sigma Y</label>
+        <input type="text" id="node-input-sigmaY" placeholder="0">
+    </div>
+
+    <div class="form-row median">
+        <label for="node-input-kSize"><i class="fa fa-tag"></i> Kernel Size</label>
+        <input type="text" id="node-input-kSize" placeholder="0">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="blurring">
+    <p>Opencv node to apply a blurring/smoothing over the input image</p>
+</script>
